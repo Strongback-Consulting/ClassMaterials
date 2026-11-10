@@ -9,6 +9,9 @@
       ******************************************************************
       *REMARKS.
       *
+      *  MAINTENANCE LOG
+      *  2026-02-11  A.RIVERA   Ward code validation tightened (RFC 4471)
+      *
       *          THE PROGRAM'S PROCEDURE INCLUDES
       *                A DAILY CONTROL BREAK REPORT AND FILE UPDATES
       *                FOR THE AVAILABLE HOSPITAL BEDS/ROOMS/WARDS
