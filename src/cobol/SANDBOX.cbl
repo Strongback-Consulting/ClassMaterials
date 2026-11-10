@@ -10,6 +10,7 @@
       *REMARKS.
       *
       *  MAINTENANCE LOG
+      *  2026-05-03  M.OKAFOR   Bed-count rounding corrected (INC 55219)
       *  2026-02-11  A.RIVERA   Ward code validation tightened (RFC 4471)
       *
       *          THE PROGRAM'S PROCEDURE INCLUDES
