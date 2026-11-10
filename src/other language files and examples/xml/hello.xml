@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root>
+  <title>
+    My First XML Document
+  </title>
+  <para>
+    Hello to the world of XML - inside of:
+    RDz.  
+  </para>
+  <note>
+    (How cool is this?)
+  </note>
+<!-- No simple "Hello World" here -->
+<!--   <para> -->
+<!--     This document written by:  -->
+<!--     <ital>(state your name)</ital> -->
+<!--   </para> -->
+  <para>
+    That's all folks
+  </para>
+</root>

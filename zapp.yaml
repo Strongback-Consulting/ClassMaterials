@@ -1,0 +1,44 @@
+# ZAPP configuration for the IDz-VSCode ClassMaterials workspace.
+# Extended from Z Open Editor's generated ZAPP document:
+# the inefficient search-all '**' property group is replaced by the
+# specific classmaterials-zapp group the course labs rely on.
+#
+# Docs: https://ibm.github.io/zopeneditor-about/Docs/setting_propertygroup.html
+name: ClassMaterials ZAPP document
+version: 5.0.0
+author:
+  name: Strongback Consulting
+description: >-
+  Property groups and build profiles for the IDz on VS Code course labs.
+  Copybooks resolve locally from src/copy; the MVS entry lets the
+  same programs resolve against your <TSOID>.CLASS.COPYLIB data set once it
+  has been populated (see HOST-SETUP.md). Replace <TSOID> with your class
+  logon id in the property-groups module lab.
+
+propertyGroups:
+  - name: classmaterials-zapp
+    language: cobol
+    libraries:
+      - name: syslib
+        type: local
+        locations:
+          - "src/copy"
+      # Uncomment and edit during the property-groups lab to resolve
+      # copybooks from the host instead of the local workspace:
+      # - name: syslib
+      #   type: mvs
+      #   locations:
+      #     - "<TSOID>.CLASS.COPYLIB"
+
+profiles:
+  - name: zBuilder-userbuild
+    type: dbb
+    settings:
+      command: "$DBB_HOME/bin/dbb build"
+      lifecycle: user
+      lifecycleArgs:
+        - "--hlq ${dbbHlq}"
+      additionalDependencies:
+        - "dbb-app.yaml"
+      logFilePatterns:
+        - "*"

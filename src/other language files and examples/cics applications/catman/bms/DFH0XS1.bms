@@ -1,0 +1,249 @@
+*********************************************************************** 00400000
+*                                                                     * 00800000
+* MODULE NAME = DFH0XS1                                               * 01200000
+*                                                                     * 01600000
+* DESCRIPTIVE NAME = CICS     (ExampleApp) BMS Maps for Application   * 02000000
+*                                                                     * 02400000
+*                                                                     * 02800000
+**    Include ONE of the following copyright statements               * 03200000
+**                                                                    * 03600000
+*    @BANNER_START                           01                       * 03700000
+*    Licensed Materials - Property of IBM                             * 03800000
+*                                                                     * 03900000
+*    5655-M15              DFH0XS1                                    * 04000000
+*                                                                     * 04100000
+*    (C) Copyright IBM Corp. 2004                                     * 04200000
+*                                                                     * 04300000
+*    CICS                                                             * 04400000
+*    (Element of CICS Transaction Server                              * 04500000
+*    for z/OS, Version 3 Release 1)                                   * 04600000
+*    @BANNER_END                                                      * 04700000
+*                                                                     * 04800000
+**                                                                    * 05200000
+* STATUS = 6.4.0                                                      * 05600000
+*                                                                     * 06000000
+* FUNCTION =                                                          * 06400000
+*        This defines the BMS map for the menu and order panels       * 06800000
+*                                                                     * 07200000
+*------------------------------------------------------------------ *   07600000
+*                                                                     * 08000000
+* DESCRIPTION                                                         * 08400000
+*         This is the BMS mapset for the main menu and the place      * 08800000
+*         order panels of the Example catalog application             * 09200000
+*                                                                     * 09600000
+*------------------------------------------------------------------ *   10000000
+*                                                                     * 10400000
+* CHANGE ACTIVITY :                                                   * 10800000
+**                                                                    * 11200000
+*        $MOD(DFH0XS1),COMP(SAMPLES),PROD(CICS    ):                  * 11600000
+*                                                                     * 12000000
+*     PN= REASON REL YYMMDD HDXXIII : REMARKS                         * 12400000
+*    $D0= I07544 640 040917 HDIPCB  : BMS MAPS FOR THE EXAMPLE APP    * 12800000
+*    $D1= I07544 640 041126 HDIPCB  : ExampleApp: Outbound support    * 13000000
+*         This PN= line ensures that when this object is ALTERed      * 13200000
+*         within a non-test MPU, a change flag is allocated and a     * 13600000
+*         change descriptor line added.                               * 14000000
+*         DO NOT DELETE THE PN= line                                  * 14400000
+*                                                                     * 14800000
+*         All code changes, after initial creation of the object,     * 15200000
+*         should be flagged using the allocated change flag.          * 15600000
+*                                                                     * 16000000
+*         See HELP LCSFLAG for an explanation of the change           * 16400000
+*         descriptor fields.                                          * 16800000
+*                                                                     * 17200000
+*********************************************************************** 17600000
+         AIF   ('&SYSPARM' EQ 'DSECT').SKIPSD                           18000000
+DFH0XS1  CSECT                                                          18400000
+DFH0XS1  AMODE 31                                                       18800000
+DFH0XS1  RMODE ANY                                                      19200000
+.SKIPSD  ANOP  ,                                                        19600000
+DFH0XS1  DFHMSD TYPE=MAP,                                              X20000000
+               LANG=COBOL,                                             X20400000
+               MODE=INOUT,                                             X20800000
+               TERM=3270-2,                                            X21200000
+               MAPATTS=(COLOR,HILIGHT),                                X21600000
+               DSATTS=(COLOR,HILIGHT),                                 X22000000
+               CTRL=FREEKB,                                            X22400000
+               STORAGE=AUTO,                                           X22800000
+               TIOAPFX=YES                                              23200000
+         EJECT                                                          23600000
+*********************************************************************** 24000000
+* Main Menu Map                                                         24400000
+EXMENU   DFHMDI SIZE=(24,80),                                          X24800000
+               LINE=1,                                                 X25200000
+               COLUMN=1                                                 25600000
+*********************************************************************** 26000000
+         DFHMDF POS=(1,1),                                             X26400000
+               LENGTH=32,                                              X26800000
+               ATTRB=(NORM,PROT),                                      X27200000
+               COLOR=GREEN,                                            X27600000
+               INITIAL='CICS EXAMPLE CATALOG APPLICATION'               28000000
+         DFHMDF POS=(1,35),                                            X28400000
+               LENGTH=32,                                              X28800000
+               ATTRB=(NORM,PROT),                                      X29200000
+               COLOR=GREEN,                                            X29600000
+               INITIAL='- Main Menu'                                    30000000
+         DFHMDF POS=(3,1),                                             X30400000
+               LENGTH=34,                                              X30800000
+               ATTRB=(NORM,PROT),                                      X31200000
+               COLOR=NEUTRAL,                                          X31600000
+               INITIAL='Select an action, then press ENTER'             32000000
+         DFHMDF POS=(5,1),                                             X32400000
+               LENGTH=14,                                              X32800000
+               ATTRB=(NORM,PROT),                                      X33200000
+               COLOR=NEUTRAL,                                          X33600000
+               INITIAL='Action . . . .'                                 34000000
+ACTION   DFHMDF POS=(5,18),                                            X34400000
+               LENGTH=1,                                               X34800000
+               ATTRB=(NORM,UNPROT,IC,FSET),                        @D1AX35200000
+               COLOR=TURQUOISE,                                        X35600000
+               HILIGHT=UNDERLINE                                        36000000
+         DFHMDF POS=(5,20),                                            X36400000
+               LENGTH=13,                                              X36800000
+               ATTRB=(NORM,PROT,ASKIP),                                X37200000
+               COLOR=DEFAULT,                                          X37600000
+               INITIAL='1. List Items'                                  38000000
+         DFHMDF POS=(6,20),                                            X38400000
+               LENGTH=20,                                              X38800000
+               ATTRB=(NORM,PROT,ASKIP),                                X39200000
+               COLOR=DEFAULT,                                          X39600000
+               INITIAL='2. Order Item Number'                           40000000
+ITEM-REF DFHMDF POS=(6,42),                                            X40400000
+               LENGTH=4,                                               X40800000
+               JUSTIFY=(ZERO),                                         X41200000
+               ATTRB=(NORM,UNPROT,FSET),                           @D1AX41600000
+               COLOR=TURQUOISE,                                        X42000000
+               HILIGHT=UNDERLINE                                        42400000
+         DFHMDF POS=(6,47),                                            X42800000
+               LENGTH=1,                                               X43200000
+               ATTRB=ASKIP                                              43600000
+         DFHMDF POS=(7,20),                                            X44000000
+               LENGTH=7,                                               X44400000
+               ATTRB=(NORM,PROT,ASKIP),                                X44800000
+               COLOR=DEFAULT,                                          X45200000
+               INITIAL='3. Exit'                                        45600000
+MSG1     DFHMDF POS=(23,1),                                            X46000000
+               LENGTH=79,                                              X46400000
+               ATTRB=(BRT,PROT),                                       X46800000
+               COLOR=YELLOW                                             47200000
+         DFHMDF POS=(24,1),                                            X47600000
+               LENGTH=7,                                               X48000000
+               ATTRB=(NORM,PROT),                                      X48400000
+               COLOR=BLUE,                                             X48800000
+               INITIAL='F3=EXIT'                                        49200000
+         DFHMDF POS=(24,12),                                           X49600000
+               LENGTH=10,                                              X50000000
+               ATTRB=(NORM,PROT),                                      X50400000
+               COLOR=BLUE,                                             X50800000
+               INITIAL='F12=CANCEL'                                     51200000
+*********************************************************************** 51600000
+* Order Detail Map                                                      52000000
+EXORDR   DFHMDI SIZE=(24,80),                                          X52400000
+               LINE=1,                                                 X52800000
+               COLUMN=1                                                 53200000
+*********************************************************************** 53600000
+         DFHMDF POS=(1,1),                                             X54000000
+               LENGTH=32,                                              X54400000
+               ATTRB=(NORM,PROT),                                      X54800000
+               COLOR=GREEN,                                            X55200000
+               INITIAL='CICS EXAMPLE CATALOG APPLICATION'               55600000
+         DFHMDF POS=(1,35),                                            X56000000
+               LENGTH=32,                                              X56400000
+               ATTRB=(NORM,PROT),                                      X56800000
+               COLOR=GREEN,                                            X57200000
+               INITIAL='- Details of your order'                        57600000
+         DFHMDF POS=(3,1),                                             X58000000
+               LENGTH=37,                                              X58400000
+               ATTRB=(NORM,PROT),                                      X58800000
+               COLOR=NEUTRAL,                                          X59200000
+               INITIAL='Enter order details, then press ENTER'          59600000
+         DFHMDF POS=(5,1),                                             X60000000
+               LENGTH=77,                                              X60400000
+               ATTRB=(NORM,PROT),                                      X60800000
+               COLOR=NEUTRAL,                                          X61200000
+               INITIAL='Item    Description                            X61600000
+                    Cost    Stock    On Order'                          62000000
+         DFHMDF POS=(6,1),                                             X62400000
+               LENGTH=77,                                              X62800000
+               ATTRB=(NORM,PROT),                                      X63200000
+               COLOR=BLUE,                                             X63600000
+               INITIAL='-----------------------------------------------X64000000
+               -------------------------------'                         64400000
+ORDR-ITEMREF  DFHMDF POS=(7,1),                                        X64800000
+               LENGTH=4,                                               X65200000
+               ATTRB=(NORM,PROT),                                      X65600000
+               COLOR=TURQUOISE                                          66000000
+ORDR-DESC     DFHMDF POS=(7,9),                                        X66400000
+               LENGTH=40,                                              X66800000
+               ATTRB=(NORM,PROT),                                      X67200000
+               COLOR=TURQUOISE                                          67600000
+ORDR-COST     DFHMDF POS=(7,51),                                       X68000000
+               LENGTH=6,                                               X68400000
+               ATTRB=(NORM,PROT),                                      X68800000
+               COLOR=TURQUOISE                                          69200000
+ORDR-STK      DFHMDF POS=(7,62),                                       X69600000
+               LENGTH=4,                                               X70000000
+               ATTRB=(NORM,PROT),                                      X70400000
+               COLOR=TURQUOISE                                          70800000
+ORDR-ORD      DFHMDF POS=(7,74),                                       X71200000
+               LENGTH=3,                                               X71600000
+               ATTRB=(NORM,PROT),                                      X72000000
+               COLOR=TURQUOISE                                          72400000
+         DFHMDF POS=(12,09),                                           X72800000
+               LENGTH=15,                                              X73200000
+               ATTRB=(NORM,PROT),                                      X73600000
+               COLOR=NEUTRAL,                                          X74000000
+               INITIAL='Order Quantity:'                                74400000
+ORDR-QUANTITY DFHMDF POS=(12,25),                                      X74800000
+               LENGTH=3,                                               X75200000
+               JUSTIFY=(ZERO),                                         X75600000
+               ATTRB=(NORM,UNPROT,IC,FSET),                        @D1AX76000000
+               COLOR=TURQUOISE,                                        X76400000
+               HILIGHT=UNDERLINE                                        76800000
+         DFHMDF POS=(12,29),                                           X77200000
+               LENGTH=1,                                               X77600000
+               ATTRB=(ASKIP)                                            78000000
+         DFHMDF POS=(13,09),                                           X78400000
+               LENGTH=15,                                              X78800000
+               ATTRB=(NORM,PROT),                                      X79200000
+               COLOR=NEUTRAL,                                          X79600000
+               INITIAL='     User Name:'                                80000000
+ORDR-USERID DFHMDF POS=(13,25),                                        X80400000
+               LENGTH=8,                                               X80800000
+               ATTRB=(NORM,UNPROT,FSET),                           @D1AX81200000
+               COLOR=TURQUOISE,                                        X81600000
+               HILIGHT=UNDERLINE                                        82000000
+         DFHMDF POS=(13,34),                                           X82500000
+               LENGTH=1,                                               X83000000
+               ATTRB=(ASKIP)                                            83500000
+         DFHMDF POS=(14,09),                                           X84000000
+               LENGTH=15,                                              X84500000
+               ATTRB=(NORM,PROT),                                      X85000000
+               COLOR=NEUTRAL,                                          X85500000
+               INITIAL='   Charge Dept:'                                86000000
+ORDR-DEPT DFHMDF POS=(14,25),                                          X86500000
+               LENGTH=8,                                               X87000000
+               ATTRB=(NORM,UNPROT,FSET),                           @D1AX87500000
+               COLOR=TURQUOISE,                                        X88000000
+               HILIGHT=UNDERLINE                                        88500000
+         DFHMDF POS=(14,34),                                           X89000000
+               LENGTH=1,                                               X89500000
+               ATTRB=(ASKIP)                                            90000000
+ORDR-MSG     DFHMDF POS=(23,1),                                        X90500000
+               LENGTH=79,                                              X91000000
+               ATTRB=(BRT,PROT),                                       X91500000
+               COLOR=YELLOW                                             92000000
+         DFHMDF POS=(24,1),                                            X92500000
+               LENGTH=7,                                               X93000000
+               ATTRB=(NORM,PROT),                                      X93500000
+               COLOR=BLUE,                                             X94000000
+               INITIAL='F3=EXIT'                                        94500000
+         DFHMDF POS=(24,12),                                           X95000000
+               LENGTH=10,                                              X95500000
+               ATTRB=(NORM,PROT),                                      X96000000
+               COLOR=BLUE,                                             X96500000
+               INITIAL='F12=CANCEL'                                     97000000
+                                                                        97500000
+*********************************************************************** 98000000
+         DFHMSD TYPE=FINAL                                              98500000
+         END                                                            99000000

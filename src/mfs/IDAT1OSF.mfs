@@ -1,0 +1,75 @@
+IDAT1   TITLE 'ADLAB BIRTHDAY SCREENS                 '
+         PRINT ON,NOGEN
+***********************************************************************
+*          NAME:  IDAT1                                               *
+*   DESCRIPTION:  MFS FOR ADLAB BIRTHDAY EXAMPLE - CONVERSATIONAL     *
+**************************************************************@SCPYRT**
+**************************************************************@ECPYRT**
+*---+----1----+----2----+----3----+----4----+----5----+----6----+----7*
+* DEFAULT TRAN:   IDATOS
+*         PSB :   IDAT1OS
+* DEVICE:         3277 MOD 2
+* SYSTEM:         NON-CONVERSATIONAL
+*                 SINGLE SEGMENT/SINGLE TRANSMISSION INPUT
+*                 SINGLE SEGMENT OUTPUT
+* * * * * * * * * *
+IDOS1O   MSG   TYPE=OUTPUT,SOR=(IDOS1F,IGNORE),NXT=IDOS1I
+         SEG
+         MFLD  CMD,LTH=8
+         MFLD  DATE,LTH=8
+         MFLD  DATEIND,LTH=1
+         MFLD  FDAYSLIT,LTH=45
+         MFLD  DAYSFLIT,LTH=23
+         MFLD  FMTDATE,LTH=30
+         MFLD  DAYSL,LTH=23
+         MFLD  DAYS,LTH=10
+         MFLD  DAYSL2,LTH=4
+         MFLD  RETTITLE,LTH=30
+         MFLD  RETL,LTH=26
+         MFLD  RETDT,LTH=30
+         MFLD  SYSMSGA,LTH=71
+         MSGEND
+IDOS1I   MSG   TYPE=INPUT,SOR=(IDOS1F,IGNORE),NXT=IDOS1O
+         SEG
+         MFLD  (CMD,'IDATOS'),LTH=8
+*         MFLD  CMD,LTH=8
+         MFLD  DATE,LTH=8
+         MFLD  DATEIND,LTH=1
+*         MFLD  (PK,'    '),LTH=4
+         MSGEND
+IDOS1F   FMT
+*        DEV   TYPE=(3270,2),FEAT=IGNORE,SYSMSG=SYSMSGA,DSCA=X'00E0'
+         DEV   TYPE=(3270,2),FEAT=IGNORE,SYSMSG=SYSMSGA,DSCA=X'00E0',  X
+               PFK=(CMD,'IDATOS  ','IDATOS  ','        ','IDATOS  ',   X
+               'IDATOS  ','IDATOS  ','IDATOS  ','IDATOS  ','IDATOS  ', X
+               'IDATOS  ','IDATOS  ','        ',                       X
+               'CLOSE ','DISBURSE','=1  ')
+         DIV   TYPE=INOUT
+         DPAGE CURSOR=((8,51))
+CMD2     DFLD  POS=(12,50),LTH=8,ATTR=(ALPHA,PROT,NODISP)
+         DFLD  'IDATOS OS/VS COBOL BIRTHDAY SAMPLE APPLICATION',       X
+               POS=(5,26),LTH=56,ATTR=ALPHA
+         DFLD  'PLEASE ENTER BIRTHDATE (YYYYMMDD):',                   X
+               POS=(8,16),LTH=34,ATTR=ALPHA
+DATE     DFLD  POS=(8,51),LTH=8,ATTR=(ALPHA,MOD)
+         DFLD  'ENTER  1  TO SEE YOUR BIRTHDAY',                       X
+               POS=(10,18),LTH=30,ATTR=ALPHA
+         DFLD  'ENTER  2  TO CALCULATE YOUR RETIREMENT',               X
+               POS=(11,18),LTH=38,ATTR=ALPHA
+         DFLD  'ENTER  @  TO ABEND',                                   X
+               POS=(12,18),LTH=18,ATTR=ALPHA
+DATEIND  DFLD  POS=(10,16),LTH=1,ATTR=(NUM,MOD)
+FDAYSLIT DFLD  POS=(13,16),LTH=45,ATTR=(ALPHA,PROT)
+DAYSFLIT DFLD  POS=(15,13),LTH=23,ATTR=(ALPHA,PROT)
+FMTDATE  DFLD  POS=(15,41),LTH=30,ATTR=(ALPHA,PROT)
+DAYSL    DFLD  POS=(17,13),LTH=23,ATTR=(ALPHA,PROT)
+DAYS     DFLD  POS=(17,41),LTH=10,ATTR=(ALPHA,PROT)
+DAYSL2   DFLD  POS=(17,52),LTH=4,ATTR=(ALPHA,PROT)
+RETTITLE DFLD  POS=(19,16),LTH=30,ATTR=(ALPHA,PROT)
+RETL     DFLD  POS=(21,13),LTH=26,ATTR=(ALPHA,PROT)
+RETDT    DFLD  POS=(21,41),LTH=30,ATTR=(ALPHA,PROT)
+         DFLD  'F3/F12 TO TERMINATE, ENTER TO PROCESS',                X
+               POS=(23,11),LTH=40,ATTR=ALPHA
+SYSMSGA  DFLD  POS=(24,1),LTH=79,ATTR=(ALPHA,PROT)
+         FMTEND
+         END

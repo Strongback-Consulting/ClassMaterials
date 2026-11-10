@@ -1,0 +1,43 @@
+# ClassMaterials — what stays out of the class repository.
+#
+# This file is itself teaching material: the git-collaboration module walks
+# through it. Every entry answers "why would committing this hurt a teammate?"
+
+# --- Site and credential detail -------------------------------------------
+# zowe.config.json ships with <HOSTNAME>/<TSOID>/<ACCOUNT> placeholders and IS
+# tracked, so the repo stays complete. Once you fill it in it carries your
+# site's host name and your logon id — details a shared repo should not spread.
+# Zowe's answer is a user overlay that git never sees:
+zowe.config.user.json
+**/zowe.config.user.json
+.zowe/
+
+# --- Per-developer editor state -------------------------------------------
+# Workspace settings are personal (your DBB HLQ, your USS sandbox path).
+.vscode/
+
+# --- Build, debug and scan output -----------------------------------------
+# Regenerated on every build; committing it creates conflicts for no benefit.
+*.log
+logs/
+BuildReport.html
+BuildReport.json
+buildList.txt
+.dbb/
+dbb-build/
+zcodescan-report.*
+
+# --- Local scratch --------------------------------------------------------
+*.bak
+*.orig
+*.rej
+
+# --- OS clutter -----------------------------------------------------------
+.DS_Store
+Thumbs.db
+
+# --- Eclipse (IDz) project state -------------------------------------------
+# The same folder is an IDz Eclipse project. Its compiled output and local
+# workspace metadata are per-machine, like .vscode/ above.
+bin/
+.metadata/

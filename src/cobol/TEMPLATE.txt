@@ -1,0 +1,7 @@
+JSON generate Jtext from ${word_selection} count in i
+           on exception
+           display 'JSON generation error: ' json-code
+           not on exception
+           display function display-of(Jtext(1:i))
+           ${cursor}
+ End-JSON.

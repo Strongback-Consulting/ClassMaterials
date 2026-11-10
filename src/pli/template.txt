@@ -1,0 +1,5 @@
+ rd= jsonGetObjectStart(p,n); /* read over { */
+ rd= jsonGetMember(p+rd,n-rd,passes); /* read “passes”:3 and assign it*/
+ allocate info;
+ rd= jsonGetComma(p+rd,n-rd); /* read over , */
+ rd= jsonGetValue(p+rd,n-rd,info.data);/* read “data” … and assign it */${cursor}

@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PROPERTY-GROUPS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <PROPERTY-GROUP isHostBased="false">
+    <NAME>zUnit_v14_PLI</NAME>
+    <DESCRIPTION>Property Group for PL/I zUnit Testing</DESCRIPTION>
+    <APPLICATION-LANGUAGE>Any</APPLICATION-LANGUAGE>
+    <LAST-EDITED>2018-10-29 10:37:11.109</LAST-EDITED>
+    <CATEGORY-INSTANCE>
+      <CATEGORY>PLI_SETTINGS</CATEGORY>
+      <PROPERTY>
+        <NAME>COMPILE_JCL_PROCEDURE_NAME</NAME>
+        <VALUE>ELAXFPL1</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>COMPILE_JOB_STEPS</NAME>
+        <VALUE>PLI,20:</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_COMPILE_OPTIONS</NAME>
+        <VALUE>PP(MACRO) SOURCE INSOURCE LIMITS(EXTNAME(8)) TEST</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_COMPILE_OPTIONS_APPEND</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LISTING_DATASET</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.PLI.LISTING</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>OBJECT_DATASET</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_SYSLIB</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.PLI.INCLUDE CEE.SCEESAMP FELE10.SFELSAMP</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>COMPILE_ERROR_FEEDBACK_ENABLED</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ERROR_FEEDBACK_FILE_PREFIX</NAME>
+        <VALUE>&lt;HLQ>.CLASS.ERRPLI</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>COMPILE_ADDITIONAL_JCL</NAME>
+        <VALUE>//******* ADDITIONAL JCL FOR COMPILE HERE ****** &#xD;
+//PLI.SYSXMLSD DD DUMMY</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>COMPILE_SYSDEBUG_DATASET</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.SYSDEBUG</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USE_CICS</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_CICS_LEVEL</NAME>
+        <VALUE>CTS41</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_CICS_SEPTRANSLATOR</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>CICS_TRANSLATOR_JCL_PROCEDURE_NAME</NAME>
+        <VALUE>ELAXFPLT</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>CICS_TRANSLATOR_JOB_STEPS</NAME>
+        <VALUE>PLITRAN,20:</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_CICS_OPTIONS</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_CICS_SYSLIB</NAME>
+        <VALUE>SYS1.SDFHPL1</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USE_DB2</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USE_DB2_ROUTINE_DEVELOPMENT</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USE_DB2_ROUTINE_DEVELOPMENT_SUBSYSTEM_ID</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_DB2_PREPROCESSOR</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_DB2_JCL_PROCEDURE_NAME</NAME>
+        <VALUE>ELAXFPLP</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_DB2_JOB_STEPS</NAME>
+        <VALUE>PLIPRE,20:</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_DB2_OPTIONS</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_DB2_SYSLIB</NAME>
+        <VALUE>&lt;HLQ>.DB2.SYSLIB</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_DB2_DBRMLOCATION</NAME>
+        <VALUE>&lt;HLQ>.DB2DBRM</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_DB2_SYSTSIN</NAME>
+        <VALUE>//*UNCOMMENT AND TAILOR THE FOLLOWING CODE IF YOUR SYSTSIN STATEMENT**
+//*CONTAINS BIND INSTRUCTIONS:                                                  
+//*//SYSTSIN   DD  *                                                            
+//* DSN SYSTEM(YOURSUBSYSTEM)
+//*    BIND PACKAGE(YOURLOCATION.YOURPACKAGE)-
+//*       OWNER(YOURUSERID) -
+//*       MEMBER(YOURMEMBER) -
+//*       LIBRARY('YOUR.DBRM.LIBRARY') -
+//*       ACTION(REP) -
+//*       VALIDATE(BIND)
+//*     BIND PLAN(YOURPLAN) -
+//*       PKLIST(YOURLOCATION.YOURPACKAGENAME.*)
+//* END
+//*    OR
+//*UNCOMMENT AND TAILOR THE FOLLOWING CODE IF YOUR SYSTSIN STATEMENT**
+//*POINTS TO A DATA SET CONTAINING BIND INSTRUCTIONS
+//*//SYSTSIN DD DSN=USERID.BIND(MEMBER),DISP=SHR
+//*</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USE_IMS</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_IMS_LIBRARY</NAME>
+        <VALUE>&lt;HLQ>.IMS.RESLIB</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USER_VARIABLES</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_GLOBAL_VARIABLES</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDED_STEP_ADDITIONAL_JCL</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDED_STEP_OPTIONS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDED_STEP_ERROR_FEEDBACK</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDED_STEP_ERROR_FEEDBACK_FILE_PREFIX</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_CICS_PREPROCESSOR</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_CICS_PREPROCESSOR_OPTIONS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_COMPILE_OPTIONS</NAME>
+        <VALUE>XINFO(XML),TEST</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_SYSLIB</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_DB2_COPROCESSOR</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_DB2_CONNECTION</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_DB2_COPROCESSOR_OPTIONS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_ENVIRONMENT_VARIABLES</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION</NAME>
+        <VALUE>-INC/++INCLUDE Preprocessor</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME</NAME>
+        <VALUE>${INSTDIR}\BIN\PPINCL01.EXE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME</NAME>
+        <VALUE>${resource_fn}.dk1</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION</NAME>
+        <VALUE>${resource_fn}_PP1.xml</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES</NAME>
+        <VALUE>SET SYSLIB=${project_loc}\includes</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NUMBER_OF_PPS</NAME>
+        <VALUE>1</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION02</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION03</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION04</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION05</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION06</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION07</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION08</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION09</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_DESCRIPTION10</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME02</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME03</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME04</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME05</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME06</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME07</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME08</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME09</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_NAME10</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS02</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS03</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS04</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS05</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS06</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS07</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS08</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS09</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OPTIONS10</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME02</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME03</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME04</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME05</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME06</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME07</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME08</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME09</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_OUTPUT_FILE_NAME10</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK02</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK03</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK04</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK05</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK06</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK07</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK08</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK09</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_SUPPORT_ERRFDBK10</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION02</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION03</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION04</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION05</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION06</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION07</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION08</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION09</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_XML_LOCATION10</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES02</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES03</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES04</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES05</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES06</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES07</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES08</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES09</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_ENVIRONMENT_VARIABLES10</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE02</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE03</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE04</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE05</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE06</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE07</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE08</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE09</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_PREPROCESSOR_IS_ACTIVE10</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>USE_LOCAL_PREPROCESSORS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>USE_EXTENSION_PREPROCESSOR</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>USE_REMOTE_PREPROCESSORS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>SCRIPT_INVOKING_PREPROCESSOR</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>PREPROCESSOR_OUTPUT_LOCATION</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>PREPROCESSOR_PARAMETERS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>PREPROCESSOR_HIGH_LEVEL_QUALIFIER</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>EXTENSION_PREPROCESSOR_ID</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_INCLUDE_LIBRARIES</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>REMOTE_INCLUDE_LIBRARIES</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>REMOTE_INCLUDE_LIBRARIES_SYSTEM</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>PROGRAM_LOOKUP_PATH</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>REMOTE_PROGRAM_LOOKUP_PATH</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>REMOTE_PROGRAM_LOOKUP_PATH_SYSTEM</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+    </CATEGORY-INSTANCE>
+    <CATEGORY-INSTANCE>
+      <CATEGORY>JCL_OPTIONS</CATEGORY>
+      <PROPERTY>
+        <NAME>JOBCARD</NAME>
+        <VALUE>//&lt;JOBNAME> JOB , &#xD;
+// MSGCLASS=H,MSGLEVEL=(1,1),TIME=NOLIMIT,REGION=144M,COND=(16,LT) &#xD;</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>GENERATED_JCL_DATASET</NAME>
+        <VALUE>&lt;HLQ>.CLASS.JCL</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>JCL_PROCEDURE_DATASETS</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+    </CATEGORY-INSTANCE>
+    <CATEGORY-INSTANCE>
+      <CATEGORY>RUNTIME_OPTIONS</CATEGORY>
+      <PROPERTY>
+        <NAME>RUN_IN_BATCH</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>RUN_IN_BATCH_WITH_DEBUG</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>RUN_FOR_CODECOVERAGE</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>RUN_DEBUG_WITH_INTEGRATED_DEBUGER</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>RUN_CODECOVERAGE_WITH_INTEGRATED_DEBUGER</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>OPTIONS</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDITIONAL_JCL</NAME>
+        <VALUE>//******* ADDITIONAL RUNTIME JCL HERE ******&#xD;
+//******* ADDITIONAL JCL FOR COMPILE HERE ******&#xD;
+//*STEPLIB DD DSN=FEK951.SFEKSAMP,DISP=SHR&#xD;
+//*SYSOUT DD SYSOUT=*   &#xD;
+//*AQEV4LST DD DSN=BRICE.ZUNIT.LISTING,DISP=SHR&#xD;
+//** Datasets DSN=xxx  DISP=shr&#xD;
+//SYSIN    DD *&#xD;
+20160115&#xD;
+/*</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>PROCEDURE_NAME</NAME>
+        <VALUE>ELAXFGO</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>JOB_STEPS</NAME>
+        <VALUE>RUN,20:</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>PROGRAM_PARAMETERS_ENABLED</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>RUNTIME_OPTIONS_BEFORE_PROGRAM_PARAMETERS</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>PROGRAM_PARAMETERS_BEFORE_RUNTIME_OPTIONS</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USER_VARIABLES</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_GLOBAL_VARIABLES</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDED_STEP_ADDITIONAL_JCL</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDED_STEP_OPTIONS</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>DEBUG_USE_INTEGRATED_DEBUGGER</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>DEBUG_CONNECTION_OPTIONS</NAME>
+        <VALUE>DBM</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>DEBUG_TEST_LEVEL</NAME>
+        <VALUE>ALL</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>DEBUG_TEST_PROMPT</NAME>
+        <VALUE>PROMPT</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>DEBUG_LE_OPTIONS</NAME>
+        <VALUE>V14.0: V14.0: V14.0:</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>DEBUG_PROBE_TRACE</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>DEBUG_PROBE_TRACE_FILE</NAME>
+        <VALUE>V14.0:</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>CODE_COVERAGE_OPTIONS</NAME>
+        <VALUE>EQA_STARTUP_KEY=CC,,ccGenerateHtml=true</VALUE>
+      </PROPERTY>
+    </CATEGORY-INSTANCE>
+    <CATEGORY-INSTANCE>
+      <CATEGORY>LINK_OPTIONS</CATEGORY>
+      <PROPERTY>
+        <NAME>JCL_PROCEDURE_NAME</NAME>
+        <VALUE>ELAXFLNK</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>JOB_STEPS</NAME>
+        <VALUE>LINK,20:</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_LINK_OPTIONS</NAME>
+        <VALUE>DYNAM(DLL) NOREUS</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LIBRARIES</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.LOAD CEE.SCEELKED FELE10.SFEKSAMP DSNB10.SDSNLOAD</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>USER_SPECIFIED_INSTRUCTIONS_ENABLED</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>USER_SPECIFIED_INSTRUCTIONS</NAME>
+        <VALUE>INCLUDE AZUTSTRX</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ENTRY_NAME</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOAD_MODULE</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.LOAD</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USER_VARIABLES</NAME>
+        <VALUE>FEKPRFX=CUST.HHOP950.V95;</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_GLOBAL_VARIABLES</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>APPEND_LOCATION_VALUE</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>APPEND_CHECKBOX</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDITIONAL_JCL</NAME>
+        <VALUE>//******* ADDITIONAL JCL FOR LINK HERE ******&#xD;
+//*LINK.STEPLIB DD DSN=DSNB10.SDSNLOAD,DISP=SHR&#xD;
+//LINK.SYSDEFSD DD DUMMY&#xD;
+//LINK.AZUTSTRX DD DISP=SHR,&#xD;
+// DSN=FELE10.SFELSAMP(AZUTSTRX)&#xD;
+</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDED_STEP_ADDITIONAL_JCL</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ADDED_STEP_OPTIONS</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_LINK_OPTIONS</NAME>
+        <VALUE>/de</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_CREATE_DLL</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_CREATE_EXE</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>LOCAL_LIBRARY_OPTIONS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+    </CATEGORY-INSTANCE>
+    <CATEGORY-INSTANCE>
+      <CATEGORY>ZUNIT_SETTINGS</CATEGORY>
+      <PROPERTY>
+        <NAME>ZUNIT_PROCEDURE_NAME</NAME>
+        <VALUE>AZUZUNIT</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_JOB_STEPS</NAME>
+        <VALUE>RUNNER,20:</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_CONTINUE_ON_TEST_CASE_FAIL</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_CONTINUE_ON_TEST_CASE_ERROR</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_CONTINUE_ON_TEST_FAIL</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_CONTINUE_ON_TEST_ERROR</NAME>
+        <VALUE>TRUE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_RUNNER_CONFIG_TARGET_CONTAINER</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.AZUCFG</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_RUNNER_RESULT_TARGET_CONTAINER</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.AZURES</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATION_CONFIG_TARGET_CONTAINER</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.AZUGEN</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATE_COBOL_TARGET_CONTAINER</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.GEN.COBOL</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATE_PLI_TARGET_CONTAINER</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.PLI</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATE_DATA_SCHEMA_TARGET_CONTAINER</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.AZUSCH</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATE_TEST_DATA_TARGET_CONTAINER</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.AZUTDT</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATE_FILE_TARGET_CONTAINER_HLQ</NAME>
+        <VALUE>&lt;HLQ>.ZUNIT.IO</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATE_FILE_SPACE_UNITS</NAME>
+        <VALUE>TRACKS</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATE_FILE_PRIMARY_QUANTITY</NAME>
+        <VALUE>100</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_GENERATE_FILE_SECONDARY_QUANTITY</NAME>
+        <VALUE>100</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_ENABLE_RUNNER_TRACE</NAME>
+        <VALUE>FALSE</VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_ADDITIONAL_JCL</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_USER_VARIABLES</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>HOST_GLOBAL_VARIABLES</NAME>
+        <VALUE></VALUE>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_ADDED_STEP_OPTIONS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_ADDED_STEP_ADDITIONAL_JCL</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_ALLOC_AUTOMATIC_DATA_SET</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_SUPERC_PROCESS_OPTIONS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+      <PROPERTY>
+        <NAME>ZUNIT_SUPERC_PROCESS_STATEMENTS</NAME>
+        <VALUE xsi:nil="true"/>
+      </PROPERTY>
+    </CATEGORY-INSTANCE>
+  </PROPERTY-GROUP>
+</PROPERTY-GROUPS>

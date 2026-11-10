@@ -1,0 +1,36 @@
+**************************** INSTALL/IVP ****************************** 00010000
+*                                                                     * 00020000
+*                   M O D U L E    P R O L O G U E                    * 00030000
+*                                                                     * 00040000
+*********************************************************************** 00050000
+*                                                                     * 00060000
+*          NAME:  DFSIVP2                                             * 00070000
+*                                                                     * 00080000
+*   DESCRIPTION:  PSB FOR TRANCD IVTNV - NON-CONV HDAM/VSAM           * 00090000
+*                                                                     * 00100000
+**************************************************************@SCPYRT** 00110000
+*                                                                     * 00111000
+*  Licensed Materials - Property of IBM                               * 00112000
+*                                                                     * 00113000
+*  5655-J38                                                           * 00114000
+*                                                                     * 00115000
+*  (C) Copyright IBM Corp. 1974,1998 All Rights Reserved              * 00116000
+*                                                                     * 00117000
+*  US Government Users Restricted Rights - Use, duplication or        * 00150000
+*  disclosure restricted by GSA ADP Schedule contract with            * 00190000
+*  IBM Corp.                                                          * 00200000
+*                                                                     * 00220000
+**************************************************************@ECPYRT** 00240000
+*                                                                     * 00260000
+*        STATUS:  IMS/ESA 3.1                                         * 00270000
+*                                                                     * 00280000
+*   MODULE TYPE:  ASSEMBLER                                           * 00290000
+*                                                                     * 00300000
+*       CHANGES:  PROLOGUE ADDED AND MINOR CHANGES FOR 3.1            * 00310000
+*                                                                     * 00320000
+*---+----1----+----2----+----3----+----4----+----5----+----6----+----7* 00330000
+         PCB   TYPE=TP,MODIFY=YES                                       00340000
+PHONEAP  PCB   TYPE=DB,DBDNAME=IVPDB2,PROCOPT=A,KEYLEN=10               00350000
+         SENSEG NAME=A1111111,PARENT=0,PROCOPT=A                        00360000
+         PSBGEN LANG=ASSEM,PSBNAME=DFSIVP2                              00370000
+         END                                                            00380000

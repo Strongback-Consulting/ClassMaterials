@@ -1,0 +1,473 @@
+*********************************************************************** 00200000
+*                                                                     * 00400000
+* MODULE NAME = DFH0XS2                                               * 00600000
+*                                                                     * 00800000
+* DESCRIPTIVE NAME = CICS     (ExampleApp) BMS Maps for Application   * 01000000
+*                                                                     * 01200000
+**                                                                    * 01400000
+*    @BANNER_START                           01                       * 01450000
+*    Licensed Materials - Property of IBM                             * 01500000
+*                                                                     * 01550000
+*    5655-M15              DFH0XS2                                    * 01600000
+*                                                                     * 01650000
+*    (C) Copyright IBM Corp. 2004                                     * 01700000
+*                                                                     * 01750000
+*    CICS                                                             * 01800000
+*    (Element of CICS Transaction Server                              * 01850000
+*    for z/OS, Version 3 Release 1)                                   * 01900000
+*    @BANNER_END                                                      * 01950000
+*                                                                     * 02000000
+**                                                                    * 02200000
+* STATUS = 6.4.0                                                      * 02400000
+*                                                                     * 02600000
+*                                                                     * 02800000
+* FUNCTION =                                                          * 03000000
+*        This defines the bms map for the inquire panel               * 03200000
+*------------------------------------------------------------------ *   03400000
+*                                                                     * 03600000
+* DESCRIPTION                                                         * 03800000
+*         This file defines the BMS mapset for the inquire panel of   * 04000000
+*         the example application                                     * 04200000
+*                                                                     * 04400000
+*                                                                     * 04600000
+*------------------------------------------------------------------ *   04800000
+*                                                                     * 05000000
+* CHANGE ACTIVITY :                                                   * 05200000
+**                                                                    * 05400000
+*        $MOD(DFH0XS2),COMP(SAMPLES),PROD(CICS    ):                  * 05600000
+*                                                                     * 05800000
+*     PN= REASON REL YYMMDD HDXXIII : REMARKS                         * 06000000
+*    $D0= I07544 640 040910 HDIPCB  : BMS MAPS FOR THE EXAMPLE APP    * 06200000
+*         This PN= line ensures that when this object is ALTERed      * 06400000
+*         within a non-test MPU, a change flag is allocated and a     * 06600000
+*         change descriptor line added.                               * 06800000
+*         DO NOT DELETE THE PN= line                                  * 07000000
+*                                                                     * 07200000
+*         All code changes, after initial creation of the object,     * 07400000
+*         should be flagged using the allocated change flag.          * 07600000
+*                                                                     * 07800000
+*         See HELP LCSFLAG for an explanation of the change           * 08000000
+*         descriptor fields.                                          * 08200000
+*                                                                     * 08400000
+*********************************************************************** 08600000
+         AIF   ('&SYSPARM' EQ 'DSECT').SKIPSD                           08800000
+DFH0XS2  CSECT                                                          09000000
+DFH0XS2  AMODE 31                                                       09200000
+DFH0XS2  RMODE ANY                                                      09400000
+.SKIPSD  ANOP  ,                                                        09600000
+DFH0XS2  DFHMSD TYPE=MAP,                                              X09800000
+               LANG=COBOL,                                             X10000000
+               MODE=INOUT,                                             X10200000
+               TERM=3270-2,                                            X10400000
+               MAPATTS=(COLOR,HILIGHT),                                X10600000
+               DSATTS=(COLOR,HILIGHT),                                 X10800000
+               CTRL=FREEKB,                                            X11000000
+               STORAGE=AUTO,                                           X11200000
+               TIOAPFX=YES                                              11400000
+         EJECT                                                          11600000
+*********************************************************************** 11800000
+* Inquiry Response Map                                                  12000000
+EXINQC   DFHMDI SIZE=(24,80),                                          X12200000
+               LINE=1,                                                 X12400000
+               COLUMN=1                                                 12600000
+*********************************************************************** 12800000
+         DFHMDF POS=(1,1),                                             X13000000
+               LENGTH=32,                                              X13200000
+               ATTRB=(NORM,PROT),                                      X13400000
+               COLOR=GREEN,                                            X13600000
+               INITIAL='CICS EXAMPLE CATALOG APPLICATION'               13800000
+         DFHMDF POS=(1,35),                                            X14000000
+               LENGTH=32,                                              X14200000
+               ATTRB=(NORM,PROT),                                      X14400000
+               COLOR=GREEN,                                            X14600000
+               INITIAL='- Inquire Catalog'                              14800000
+         DFHMDF POS=(3,1),                                             X15000000
+               LENGTH=54,                                              X15200000
+               ATTRB=(NORM,PROT),                                      X15400000
+               COLOR=NEUTRAL,                                          X15600000
+               INITIAL='Select a single item to order with /, then presX15800000
+               s ENTER'                                                 16000000
+         DFHMDF POS=(5,1),                                             X16200000
+               LENGTH=77,                                              X16400000
+               ATTRB=(NORM,PROT),                                      X16600000
+               COLOR=NEUTRAL,                                          X16800000
+               INITIAL='Item    Description                            X17000000
+                    Cost   Order           '                            17200000
+         DFHMDF POS=(6,1),                                             X17400000
+               LENGTH=77,                                              X17600000
+               ATTRB=(NORM,PROT),                                      X17800000
+               COLOR=BLUE,                                             X18000000
+               INITIAL='-----------------------------------------------X18200000
+               ------------------'                                      18400000
+* Start Item Display ****                                               18600000
+INQ1-ITEMREF  DFHMDF POS=(7,1),                                        X18800000
+               LENGTH=4,                                               X19000000
+               ATTRB=(NORM,PROT),                                      X19200000
+               COLOR=TURQUOISE                                          19400000
+INQ1-DESC     DFHMDF POS=(7,9),                                        X19600000
+               LENGTH=40,                                              X19800000
+               ATTRB=(NORM,PROT),                                      X20000000
+               COLOR=TURQUOISE                                          20200000
+INQ1-COST     DFHMDF POS=(7,51),                                       X20400000
+               LENGTH=6,                                               X20600000
+               ATTRB=(NORM,PROT),                                      X20800000
+               COLOR=TURQUOISE,                                        X21000000
+               PICOUT='ZZ9.99'                                          21200000
+INQ1-ORD      DFHMDF POS=(7,62),                                       X21400000
+               LENGTH=1,                                               X21600000
+               ATTRB=(NORM,UNPROT,IC),                                 X21800000
+               COLOR=TURQUOISE,                                        X22000000
+               HILIGHT=UNDERLINE                                        22200000
+              DFHMDF POS=(7,64),                                       X22400000
+               LENGTH=1,                                               X22600000
+               ATTRB=(ASKIP)                                            22800000
+* End Item Display ****                                                 23000000
+* Start Item Display ****                                               23200000
+INQ2-ITEMREF  DFHMDF POS=(8,1),                                        X23400000
+               LENGTH=4,                                               X23600000
+               ATTRB=(NORM,PROT),                                      X23800000
+               COLOR=TURQUOISE                                          24000000
+INQ2-DESC     DFHMDF POS=(8,9),                                        X24200000
+               LENGTH=40,                                              X24400000
+               ATTRB=(NORM,PROT),                                      X24600000
+               COLOR=TURQUOISE                                          24800000
+INQ2-COST     DFHMDF POS=(8,51),                                       X25000000
+               LENGTH=6,                                               X25200000
+               ATTRB=(NORM,PROT),                                      X25400000
+               COLOR=TURQUOISE,                                        X25600000
+               PICOUT='ZZ9.99'                                          25800000
+INQ2-ORD      DFHMDF POS=(8,62),                                       X26000000
+               LENGTH=1,                                               X26200000
+               ATTRB=(NORM,UNPROT),                                    X26400000
+               COLOR=TURQUOISE,                                        X26600000
+               HILIGHT=UNDERLINE                                        26800000
+              DFHMDF POS=(8,64),                                       X27000000
+               LENGTH=1,                                               X27200000
+               ATTRB=(ASKIP)                                            27400000
+* End Item Display ****                                                 27600000
+* Start Item Display ****                                               27800000
+INQ3-ITEMREF  DFHMDF POS=(9,1),                                        X28000000
+               LENGTH=4,                                               X28200000
+               ATTRB=(NORM,PROT),                                      X28400000
+               COLOR=TURQUOISE                                          28600000
+INQ3-DESC     DFHMDF POS=(9,9),                                        X28800000
+               LENGTH=40,                                              X29000000
+               ATTRB=(NORM,PROT),                                      X29200000
+               COLOR=TURQUOISE                                          29400000
+INQ3-COST     DFHMDF POS=(9,51),                                       X29600000
+               LENGTH=6,                                               X29800000
+               ATTRB=(NORM,PROT),                                      X30000000
+               COLOR=TURQUOISE,                                        X30200000
+               PICOUT='ZZ9.99'                                          30400000
+INQ3-ORD      DFHMDF POS=(9,62),                                       X30600000
+               LENGTH=1,                                               X30800000
+               ATTRB=(NORM,UNPROT),                                    X31000000
+               COLOR=TURQUOISE,                                        X31200000
+               HILIGHT=UNDERLINE                                        31400000
+              DFHMDF POS=(9,64),                                       X31600000
+               LENGTH=1,                                               X31800000
+               ATTRB=(ASKIP)                                            32000000
+* End Item Display ****                                                 32200000
+* Start Item Display ****                                               32400000
+INQ4-ITEMREF  DFHMDF POS=(10,1),                                       X32600000
+               LENGTH=4,                                               X32800000
+               ATTRB=(NORM,PROT),                                      X33000000
+               COLOR=TURQUOISE                                          33200000
+INQ4-DESC     DFHMDF POS=(10,9),                                       X33400000
+               LENGTH=40,                                              X33600000
+               ATTRB=(NORM,PROT),                                      X33800000
+               COLOR=TURQUOISE                                          34000000
+INQ4-COST     DFHMDF POS=(10,51),                                      X34200000
+               LENGTH=6,                                               X34400000
+               ATTRB=(NORM,PROT),                                      X34600000
+               COLOR=TURQUOISE,                                        X34800000
+               PICOUT='ZZ9.99'                                          35000000
+INQ4-ORD      DFHMDF POS=(10,62),                                      X35200000
+               LENGTH=1,                                               X35400000
+               ATTRB=(NORM,UNPROT),                                    X35600000
+               COLOR=TURQUOISE,                                        X35800000
+               HILIGHT=UNDERLINE                                        36000000
+              DFHMDF POS=(10,64),                                      X36200000
+               LENGTH=1,                                               X36400000
+               ATTRB=(ASKIP)                                            36600000
+* End Item Display ****                                                 36800000
+* Start Item Display ****                                               37000000
+INQ5-ITEMREF  DFHMDF POS=(11,1),                                       X37200000
+               LENGTH=4,                                               X37400000
+               ATTRB=(NORM,PROT),                                      X37600000
+               COLOR=TURQUOISE                                          37800000
+INQ5-DESC     DFHMDF POS=(11,9),                                       X38000000
+               LENGTH=40,                                              X38200000
+               ATTRB=(NORM,PROT),                                      X38400000
+               COLOR=TURQUOISE                                          38600000
+INQ5-COST     DFHMDF POS=(11,51),                                      X38800000
+               LENGTH=6,                                               X39000000
+               ATTRB=(NORM,PROT),                                      X39200000
+               COLOR=TURQUOISE,                                        X39400000
+               PICOUT='ZZ9.99'                                          39600000
+INQ5-ORD      DFHMDF POS=(11,62),                                      X39800000
+               LENGTH=1,                                               X40000000
+               ATTRB=(NORM,UNPROT),                                    X40200000
+               COLOR=TURQUOISE,                                        X40400000
+               HILIGHT=UNDERLINE                                        40600000
+              DFHMDF POS=(11,64),                                      X40800000
+               LENGTH=1,                                               X41000000
+               ATTRB=(ASKIP)                                            41200000
+* End Item Display ****                                                 41400000
+* Start Item Display ****                                               41600000
+INQ6-ITEMREF  DFHMDF POS=(12,1),                                       X41800000
+               LENGTH=4,                                               X42000000
+               ATTRB=(NORM,PROT),                                      X42200000
+               COLOR=TURQUOISE                                          42400000
+INQ6-DESC     DFHMDF POS=(12,9),                                       X42600000
+               LENGTH=40,                                              X42800000
+               ATTRB=(NORM,PROT),                                      X43000000
+               COLOR=TURQUOISE                                          43200000
+INQ6-COST     DFHMDF POS=(12,51),                                      X43400000
+               LENGTH=6,                                               X43600000
+               ATTRB=(NORM,PROT),                                      X43800000
+               COLOR=TURQUOISE,                                        X44000000
+               PICOUT='ZZ9.99'                                          44200000
+INQ6-ORD      DFHMDF POS=(12,62),                                      X44400000
+               LENGTH=1,                                               X44600000
+               ATTRB=(NORM,UNPROT),                                    X44800000
+               COLOR=TURQUOISE,                                        X45000000
+               HILIGHT=UNDERLINE                                        45200000
+              DFHMDF POS=(12,64),                                      X45400000
+               LENGTH=1,                                               X45600000
+               ATTRB=(ASKIP)                                            45800000
+* End Item Display ****                                                 46000000
+* Start Item Display ****                                               46200000
+INQ7-ITEMREF  DFHMDF POS=(13,1),                                       X46400000
+               LENGTH=4,                                               X46600000
+               ATTRB=(NORM,PROT),                                      X46800000
+               COLOR=TURQUOISE                                          47000000
+INQ7-DESC     DFHMDF POS=(13,9),                                       X47200000
+               LENGTH=40,                                              X47400000
+               ATTRB=(NORM,PROT),                                      X47600000
+               COLOR=TURQUOISE                                          47800000
+INQ7-COST     DFHMDF POS=(13,51),                                      X48000000
+               LENGTH=6,                                               X48200000
+               ATTRB=(NORM,PROT),                                      X48400000
+               COLOR=TURQUOISE,                                        X48600000
+               PICOUT='ZZ9.99'                                          48800000
+INQ7-ORD      DFHMDF POS=(13,62),                                      X49000000
+               LENGTH=1,                                               X49200000
+               ATTRB=(NORM,UNPROT),                                    X49400000
+               COLOR=TURQUOISE,                                        X49600000
+               HILIGHT=UNDERLINE                                        49800000
+              DFHMDF POS=(13,64),                                      X50000000
+               LENGTH=1,                                               X50200000
+               ATTRB=(ASKIP)                                            50400000
+* End Item Display ****                                                 50600000
+* Start Item Display ****                                               50800000
+INQ8-ITEMREF  DFHMDF POS=(14,1),                                       X51000000
+               LENGTH=4,                                               X51200000
+               ATTRB=(NORM,PROT),                                      X51400000
+               COLOR=TURQUOISE                                          51600000
+INQ8-DESC     DFHMDF POS=(14,9),                                       X51800000
+               LENGTH=40,                                              X52000000
+               ATTRB=(NORM,PROT),                                      X52200000
+               COLOR=TURQUOISE                                          52400000
+INQ8-COST     DFHMDF POS=(14,51),                                      X52600000
+               LENGTH=6,                                               X52800000
+               ATTRB=(NORM,PROT),                                      X53000000
+               COLOR=TURQUOISE,                                        X53200000
+               PICOUT='ZZ9.99'                                          53400000
+INQ8-ORD      DFHMDF POS=(14,62),                                      X53600000
+               LENGTH=1,                                               X53800000
+               ATTRB=(NORM,UNPROT),                                    X54000000
+               COLOR=TURQUOISE,                                        X54200000
+               HILIGHT=UNDERLINE                                        54400000
+              DFHMDF POS=(14,64),                                      X54600000
+               LENGTH=1,                                               X54800000
+               ATTRB=(ASKIP)                                            55000000
+* End Item Display ****                                                 55200000
+* Start Item Display ****                                               55400000
+INQ9-ITEMREF  DFHMDF POS=(15,1),                                       X55600000
+               LENGTH=4,                                               X55800000
+               ATTRB=(NORM,PROT),                                      X56000000
+               COLOR=TURQUOISE                                          56200000
+INQ9-DESC     DFHMDF POS=(15,9),                                       X56400000
+               LENGTH=40,                                              X56600000
+               ATTRB=(NORM,PROT),                                      X56800000
+               COLOR=TURQUOISE                                          57000000
+INQ9-COST     DFHMDF POS=(15,51),                                      X57200000
+               LENGTH=6,                                               X57400000
+               ATTRB=(NORM,PROT),                                      X57600000
+               COLOR=TURQUOISE,                                        X57800000
+               PICOUT='ZZ9.99'                                          58000000
+INQ9-ORD      DFHMDF POS=(15,62),                                      X58200000
+               LENGTH=1,                                               X58400000
+               ATTRB=(NORM,UNPROT),                                    X58600000
+               COLOR=TURQUOISE,                                        X58800000
+               HILIGHT=UNDERLINE                                        59000000
+              DFHMDF POS=(15,64),                                      X59200000
+               LENGTH=1,                                               X59400000
+               ATTRB=(ASKIP)                                            59600000
+* End Item Display ****                                                 59800000
+* Start Item Display ****                                               60000000
+INQ10-ITEMREF DFHMDF POS=(16,1),                                       X60200000
+               LENGTH=4,                                               X60400000
+               ATTRB=(NORM,PROT),                                      X60600000
+               COLOR=TURQUOISE                                          60800000
+INQ10-DESC    DFHMDF POS=(16,9),                                       X61000000
+               LENGTH=40,                                              X61200000
+               ATTRB=(NORM,PROT),                                      X61400000
+               COLOR=TURQUOISE                                          61600000
+INQ10-COST    DFHMDF POS=(16,51),                                      X61800000
+               LENGTH=6,                                               X62000000
+               ATTRB=(NORM,PROT),                                      X62200000
+               COLOR=TURQUOISE,                                        X62400000
+               PICOUT='ZZ9.99'                                          62600000
+INQ10-ORD     DFHMDF POS=(16,62),                                      X62800000
+               LENGTH=1,                                               X63000000
+               ATTRB=(NORM,UNPROT),                                    X63200000
+               COLOR=TURQUOISE,                                        X63400000
+               HILIGHT=UNDERLINE                                        63600000
+              DFHMDF POS=(16,64),                                      X63800000
+               LENGTH=1,                                               X64000000
+               ATTRB=(ASKIP)                                            64200000
+* End Item Display ****                                                 64400000
+* Start Item Display ****                                               64600000
+INQ11-ITEMREF DFHMDF POS=(17,1),                                       X64800000
+               LENGTH=4,                                               X65000000
+               ATTRB=(NORM,PROT),                                      X65200000
+               COLOR=TURQUOISE                                          65400000
+INQ11-DESC    DFHMDF POS=(17,9),                                       X65600000
+               LENGTH=40,                                              X65800000
+               ATTRB=(NORM,PROT),                                      X66000000
+               COLOR=TURQUOISE                                          66200000
+INQ11-COST    DFHMDF POS=(17,51),                                      X66400000
+               LENGTH=6,                                               X66600000
+               ATTRB=(NORM,PROT),                                      X66800000
+               COLOR=TURQUOISE,                                        X67000000
+               PICOUT='ZZ9.99'                                          67200000
+INQ11-ORD     DFHMDF POS=(17,62),                                      X67400000
+               LENGTH=1,                                               X67600000
+               ATTRB=(NORM,UNPROT),                                    X67800000
+               COLOR=TURQUOISE,                                        X68000000
+               HILIGHT=UNDERLINE                                        68200000
+              DFHMDF POS=(17,64),                                      X68400000
+               LENGTH=1,                                               X68600000
+               ATTRB=(ASKIP)                                            68800000
+* End Item Display ****                                                 69000000
+* Start Item Display ****                                               69200000
+INQ12-ITEMREF DFHMDF POS=(18,1),                                       X69400000
+               LENGTH=4,                                               X69600000
+               ATTRB=(NORM,PROT),                                      X69800000
+               COLOR=TURQUOISE                                          70000000
+INQ12-DESC    DFHMDF POS=(18,9),                                       X70200000
+               LENGTH=40,                                              X70400000
+               ATTRB=(NORM,PROT),                                      X70600000
+               COLOR=TURQUOISE                                          70800000
+INQ12-COST    DFHMDF POS=(18,51),                                      X71000000
+               LENGTH=6,                                               X71200000
+               ATTRB=(NORM,PROT),                                      X71400000
+               COLOR=TURQUOISE,                                        X71600000
+               PICOUT='ZZ9.99'                                          71800000
+INQ12-ORD     DFHMDF POS=(18,62),                                      X72000000
+               LENGTH=1,                                               X72200000
+               ATTRB=(NORM,UNPROT),                                    X72400000
+               COLOR=TURQUOISE,                                        X72600000
+               HILIGHT=UNDERLINE                                        72800000
+              DFHMDF POS=(18,64),                                      X73000000
+               LENGTH=1,                                               X73200000
+               ATTRB=(ASKIP)                                            73400000
+* End Item Display ****                                                 73600000
+* Start Item Display ****                                               73800000
+INQ13-ITEMREF DFHMDF POS=(19,1),                                       X74000000
+               LENGTH=4,                                               X74200000
+               ATTRB=(NORM,PROT),                                      X74400000
+               COLOR=TURQUOISE                                          74600000
+INQ13-DESC    DFHMDF POS=(19,9),                                       X74800000
+               LENGTH=40,                                              X75000000
+               ATTRB=(NORM,PROT),                                      X75200000
+               COLOR=TURQUOISE                                          75400000
+INQ13-COST    DFHMDF POS=(19,51),                                      X75600000
+               LENGTH=6,                                               X75800000
+               ATTRB=(NORM,PROT),                                      X76000000
+               COLOR=TURQUOISE,                                        X76200000
+               PICOUT='ZZ9.99'                                          76400000
+INQ13-ORD     DFHMDF POS=(19,62),                                      X76600000
+               LENGTH=1,                                               X76800000
+               ATTRB=(NORM,UNPROT),                                    X77000000
+               COLOR=TURQUOISE,                                        X77200000
+               HILIGHT=UNDERLINE                                        77400000
+              DFHMDF POS=(19,64),                                      X77600000
+               LENGTH=1,                                               X77800000
+               ATTRB=(ASKIP)                                            78000000
+* End Item Display ****                                                 78200000
+* Start Item Display ****                                               78400000
+INQ14-ITEMREF DFHMDF POS=(20,1),                                       X78600000
+               LENGTH=4,                                               X78800000
+               ATTRB=(NORM,PROT),                                      X79000000
+               COLOR=TURQUOISE                                          79300000
+INQ14-DESC    DFHMDF POS=(20,9),                                       X79600000
+               LENGTH=40,                                              X79900000
+               ATTRB=(NORM,PROT),                                      X80200000
+               COLOR=TURQUOISE                                          80500000
+INQ14-COST    DFHMDF POS=(20,51),                                      X80800000
+               LENGTH=6,                                               X81100000
+               ATTRB=(NORM,PROT),                                      X81400000
+               COLOR=TURQUOISE,                                        X81700000
+               PICOUT='ZZ9.99'                                          82000000
+INQ14-ORD     DFHMDF POS=(20,62),                                      X82300000
+               LENGTH=1,                                               X82600000
+               ATTRB=(NORM,UNPROT),                                    X82900000
+               COLOR=TURQUOISE,                                        X83200000
+               HILIGHT=UNDERLINE                                        83500000
+              DFHMDF POS=(20,64),                                      X83800000
+               LENGTH=1,                                               X84100000
+               ATTRB=(ASKIP)                                            84400000
+* End Item Display ****                                                 84700000
+* Start Item Display ****                                               85000000
+INQ15-ITEMREF DFHMDF POS=(21,1),                                       X85300000
+               LENGTH=4,                                               X85600000
+               ATTRB=(NORM,PROT),                                      X85900000
+               COLOR=TURQUOISE                                          86200000
+INQ15-DESC    DFHMDF POS=(21,9),                                       X86500000
+               LENGTH=40,                                              X86800000
+               ATTRB=(NORM,PROT),                                      X87100000
+               COLOR=TURQUOISE                                          87400000
+INQ15-COST    DFHMDF POS=(21,51),                                      X87700000
+               LENGTH=6,                                               X88000000
+               ATTRB=(NORM,PROT),                                      X88300000
+               COLOR=TURQUOISE,                                        X88600000
+               PICOUT='ZZ9.99'                                          88900000
+INQ15-ORD     DFHMDF POS=(21,62),                                      X89200000
+               LENGTH=1,                                               X89500000
+               ATTRB=(NORM,UNPROT),                                    X89800000
+               COLOR=TURQUOISE,                                        X90100000
+               HILIGHT=UNDERLINE                                        90400000
+              DFHMDF POS=(21,64),                                      X90700000
+               LENGTH=1,                                               X91000000
+               ATTRB=(ASKIP)                                            91300000
+* End Item Display ****                                                 91600000
+INQC-MSG     DFHMDF POS=(23,1),                                        X91900000
+               LENGTH=79,                                              X92200000
+               ATTRB=(BRT,PROT),                                       X92500000
+               COLOR=YELLOW                                             92800000
+         DFHMDF POS=(24,1),                                            X93100000
+               LENGTH=7,                                               X93400000
+               ATTRB=(NORM,PROT),                                      X93700000
+               COLOR=BLUE,                                             X94000000
+               INITIAL='F3=EXIT'                                        94300000
+         DFHMDF POS=(24,12),                                           X94600000
+               LENGTH=7,                                               X94900000
+               ATTRB=(NORM,PROT),                                      X95200000
+               COLOR=BLUE,                                             X95500000
+               INITIAL='F7=BACK'                                        95800000
+         DFHMDF POS=(24,22),                                           X96100000
+               LENGTH=10,                                              X96400000
+               ATTRB=(NORM,PROT),                                      X96700000
+               COLOR=BLUE,                                             X97000000
+               INITIAL='F8=FORWARD'                                     97300000
+         DFHMDF POS=(24,35),                                           X97600000
+               LENGTH=10,                                              X97900000
+               ATTRB=(NORM,PROT),                                      X98200000
+               COLOR=BLUE,                                             X98500000
+               INITIAL='F12=CANCEL'                                     98800000
+*********************************************************************** 99100000
+         DFHMSD TYPE=FINAL                                              99400000
+         END                                                            99700000

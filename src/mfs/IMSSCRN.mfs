@@ -1,0 +1,145 @@
+*WORKING MFS SOURCE
+         PRINT ON,NOGEN                                                 00001
+         EJECT                                                          00002
+*********************************************************************** 00003
+*              VB9906      PART-SUPP MAIN MENU                        * 00007
+*             FORMAT BLOCKS (DIF/DOF) FOR 3270-2                      * 00009
+*********************************************************************** 00011
+
+*********************************************************************** 00127
+*        INPUT MESSAGE FORMAT (MID) FOR VB9906                        * 00129
+*        VB9906I                                                      * 00130
+*********************************************************************** 00132
+VB9906I  MSG TYPE=INPUT,SOR=(VB9906,IGNORE),NXT=VB9906O                 00133
+         SEG                                                            00134
+         MFLD (PFKY,'VB99006  ENTER'),LTH=14                            00135
+         MFLD IPRTNUMX,LTH=23                                           00136
+         MFLD ISUPPNOX,LTH=05                                           00136
+         MFLD HPRTNUMX,LTH=23                                           00136
+         MFLD HSUPPNOX,LTH=05                                           00136
+         MFLD HPONUMXX,LTH=06                                           00136
+         MFLD CKBYTEXX,FILL=C'0',LTH=01                                 00136
+         MSGEND                                                         00142
+         EJECT                                                          00143
+*********************************************************************** 00144
+*        OUTPUT MESSAGE FORMAT (MOD) FOR VB9906                       * 00146
+*        VB9906O  (USED FOR MAIN OUTPUT SCREEN)                       * 00147
+*********************************************************************** 00149
+VB9906O  MSG TYPE=OUTPUT,SOR=(VB9906,IGNORE),NXT=VB9906I                00150
+         SEG                                                            00151
+         MFLD (SDATEXXX,DATE2)
+         MFLD (CKBYTEXX,'1'),LTH=01
+         MFLD IPRTNUMX,LTH=23
+         MFLD HPRTNUMX,LTH=23
+         MFLD OPARTNME,LTH=14
+         MFLD OGCCODEX,LTH=01
+         MFLD OSPECNOX,LTH=07
+         MFLD OBPNOXXX,LTH=10
+         MFLD OUMCODEX,LTH=03
+         MFLD OLTCODEX,LTH=03
+         MFLD OENGINEX,LTH=05
+         MFLD ISUPPNOX,LTH=07,ATTR=YES
+         MFLD HSUPPNOX,LTH=05
+         MFLD OSUPPNME,LTH=15
+         MFLD OPERFXXX,LTH=03
+         MFLD ORATINGX,LTH=01
+         DO 9
+         MFLD OPONUM,LTH=06
+         MFLD OBUYER,LTH=03
+         MFLD OQTYXX,LTH=07
+         MFLD OPRICE,LTH=11
+         MFLD OTCOST,LTH=13
+         MFLD OODTXX,LTH=8
+         MFLD ODDTXX,LTH=8
+         ENDDO
+         MFLD HPONUMXX,LTH=06
+         MFLD IERRMSG,LTH=79                                            00153
+         MSGEND                                                         00177
+VB9906   FMT                                                            00012
+         DEV   TYPE=(3270,2),FEAT=IGNORE,SYSMSG=IERRMSG,               X00013
+               PFK=(PFKY,                                              X00014
+               1='VB99006  PF1  ',                                     X00015
+               2='VB99006  PF2  ',                                     X00016
+               3='VB99006  PF3  ',                                     X00017
+               4='VB99006  PF4  ',                                     X00018
+               5='VB99006  ENTER',                                     X00019
+               6='VB99006  ENTER',                                     X00020
+               7='VB99006  ENTER',                                     X00021
+               8='VB99006  ENTER',                                     X00022
+               9='VB99006  ENTER',                                     X00023
+               10='VB99006  ENTER',                                    X00024
+               11='VB99006  ENTER',                                    X00025
+               12='/FOR VB005A51.',                                    X00026
+               13='VB99006  ENTER',                                    X00027
+               14='VB99006  ENTER',                                    X00028
+               15='VB99006  ENTER',                                    X00029
+               16='VB99006  ENTER',                                    X00030
+               17='VB99006  ENTER',                                    X00031
+               18='VB99006  ENTER',                                    X00032
+               19='VB99006  ENTER',                                    X00033
+               20='VB99006  ENTER',                                    X00034
+               21='VB99006  ENTER',                                    X00035
+               22='VB99006  ENTER',                                    X00036
+               23='VB99006  ENTER',                                    X00037
+               24='VB99006  ENTER')                                     00038
+         DIV   TYPE=INOUT                                               00039
+         DPAGE CURSOR=((3,16))                                          00040
+         DFLD  'IMS Screen',LTH=10,                                    *
+               POS=(1,2),                                              *
+               ATTR=(NUM,PROT,HI)
+         DFLD  'IMS INQUIRY SCREEN',LTH=18,                            *
+               POS=(1,32),                                             *
+               ATTR=(NUM,PROT,HI)
+CKBYTEXX DFLD  POS=(1,60),ATTR=(NUM,PROT,MOD,NODISP),LTH=01             00048
+HPONUMXX DFLD  POS=(1,64),ATTR=(NUM,PROT,MOD,NODISP),LTH=06             00048
+SDATEXXX DFLD  POS=(1,72),ATTR=(NUM,PROT,HI),LTH=08                     00046
+         DFLD  'WARD NUMBER:',LTH=12,                                  *
+               POS=(3,3),                                              *
+               ATTR=(NUM,PROT,HI)
+IPRTNUMX DFLD  POS=(3,16),ATTR=(MOD,ALPHA),LTH=23                       00048
+HPRTNUMX DFLD  POS=(3,41),ATTR=(MOD,NUM,PROT,NODISP),LTH=23             00048
+         DFLD  'WARD DESC         AMT   CODE      IT#',LTH=37,         *
+               POS=(5,3),                                              *
+               ATTR=(NUM,PROT,HI)
+         DFLD  'PBC   ACE  PARTNBR',LTH=211,                           *
+               POS=(5,50),                                             *
+               ATTR=(NUM,PROT,HI)
+OPARTNME DFLD  POS=(6,3),ATTR=(NUM,PROT),LTH=14                         00048
+OGCCODEX DFLD  POS=(6,22),ATTR=(NUM,PROT),LTH=01                        00048
+OSPECNOX DFLD  POS=(6,27),ATTR=(NUM,PROT),LTH=07                        00048
+OBPNOXXX DFLD  POS=(6,37),ATTR=(NUM,PROT),LTH=10                        00048
+OUMCODEX DFLD  POS=(6,50),ATTR=(NUM,PROT),LTH=03                        00048
+OLTCODEX DFLD  POS=(6,56),ATTR=(NUM,PROT),LTH=03                        00048
+OENGINEX DFLD  POS=(6,61),ATTR=(NUM,PROT),LTH=05                        00048
+         DFLD  'HOSPITAL    NAME             PERF  RATING',LTH=41,     *
+               POS=(8,3),                                              *
+               ATTR=(NUM,PROT,HI)
+ISUPPNOX DFLD  POS=(9,5),ATTR=(MOD,ALPHA),LTH=05
+OSUPPNME DFLD  POS=(9,15),ATTR=(NUM,PROT),LTH=15                        00048
+OPERFXXX DFLD  POS=(9,32),ATTR=(NUM,PROT),LTH=03                        00048
+ORATINGX DFLD  POS=(9,40),ATTR=(NUM,PROT),LTH=01                        00048
+HSUPPNOX DFLD  POS=(10,5),ATTR=(MOD,NUM,PROT,NODISP),LTH=05
+         DFLD  'BILL #  PAYOR  QTY    TEST PRICE     TOTAL AMT',LTH=46,*
+               POS=(11,3),                                             *
+               ATTR=(NUM,PROT,HI)
+         DFLD  'ORDER DATE  DELIVERY DATE',                            X00044
+               POS=(11,53),ATTR=(NUM,PROT,HI),LTH=25                    00045
+         DO 9
+OPONUM   DFLD  POS=(13,3),ATTR=(NUM,PROT),LTH=06                        00048
+OBUYER   DFLD  POS=(13,12),ATTR=(NUM,PROT),LTH=03                       00048
+OQTYXX   DFLD  POS=(13,17),ATTR=(NUM,PROT),LTH=07                       00048
+OPRICE   DFLD  POS=(13,25),ATTR=(NUM,PROT),LTH=11                       00048
+OTCOST   DFLD  POS=(13,37),ATTR=(NUM,PROT),LTH=13                       00048
+OODTXX   DFLD  POS=(13,54),ATTR=(NUM,PROT),LTH=8                        00048
+ODDTXX   DFLD  POS=(13,67),ATTR=(NUM,PROT),LTH=8                        00048
+         ENDDO
+         DFLD  'PF1=NEW PO  PF2=NEXT LINE ITEM  PF3=SPECIFIC PO',      *
+               LTH=53,                                                 *
+               POS=(23,3),                                             *
+               ATTR=(NUM,PROT,HI)
+         DFLD  'PF4=NEXT PAGE PF12=MENU',                              X00044
+               POS=(23,56),ATTR=(NUM,PROT,HI),LTH=23                    00045
+IERRMSG  DFLD  POS=(24,2),ATTR=(NUM,PROT,HI),LTH=79                     00124
+         FMTEND                                                         00125
+         EJECT                                                          00126
+         END

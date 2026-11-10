@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions name="LAB304" targetNamespace="file://target.files" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tns="file://target.files" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsd1="http://www.LAB3POTI.com/schemas/LAB3POTIInterface" xmlns:xsd2="http://www.LAB3POTO.com/schemas/LAB3POTOInterface">
+  <wsdl:types>
+    <schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://www.LAB3POTI.com/schemas/LAB3POTIInterface" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cbl="http://www.LAB3POTI.com/schemas/LAB3POTIInterface">
+      <complexType name="DFHCOMMAREA">
+        <sequence>
+          <element form="unqualified" name="CustNo">
+            <simpleType>
+              <restriction base="int"/>
+            </simpleType>
+          </element>
+        </sequence>
+      </complexType>
+      <element name="DFHCOMMAREA" type="cbl:DFHCOMMAREA">
+        <annotation>
+          <documentation source="com.ibm.etools.xmlent.batch">9.1.0.V20100327_0725</documentation>
+        </annotation>
+      </element>
+    </schema>
+    <schema attributeFormDefault="qualified" elementFormDefault="unqualified" targetNamespace="http://www.LAB3POTO.com/schemas/LAB3POTOInterface" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:cbl="http://www.LAB3POTO.com/schemas/LAB3POTOInterface">
+      <complexType name="DFHCOMMAREA">
+        <sequence>
+          <element form="unqualified" name="CustNo">
+            <simpleType>
+              <restriction base="int"/>
+            </simpleType>
+          </element>
+          <element form="unqualified" name="LastName">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="25"/>
+                <whiteSpace value="collapse"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="unqualified" name="FirstName">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="15"/>
+                <whiteSpace value="collapse"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="unqualified" name="Address1">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="20"/>
+                <whiteSpace value="collapse"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="unqualified" name="City">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="20"/>
+                <whiteSpace value="collapse"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="unqualified" name="State">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="5"/>
+                <whiteSpace value="collapse"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="unqualified" name="Country">
+            <annotation>
+              <appinfo source="http://www.wsadie.com/appinfo">
+                <initialValue kind="SPACE"/>
+              </appinfo>
+            </annotation>
+            <simpleType>
+              <restriction base="string">
+                <maxLength value="15"/>
+                <whiteSpace value="collapse"/>
+              </restriction>
+            </simpleType>
+          </element>
+          <element form="unqualified" name="RetCode">
+            <simpleType>
+              <restriction base="short">
+                <minInclusive value="-9"/>
+                <maxInclusive value="9"/>
+              </restriction>
+            </simpleType>
+          </element>
+        </sequence>
+      </complexType>
+      <element name="DFHCOMMAREA" type="cbl:DFHCOMMAREA">
+        <annotation>
+          <documentation source="com.ibm.etools.xmlent.batch">9.1.0.V20100327_0725</documentation>
+        </annotation>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="LAB3POTOperationRequest">
+    <wsdl:part element="xsd1:DFHCOMMAREA" name="DFHCOMMAREAPart"/>
+  </wsdl:message>
+  <wsdl:message name="LAB3POTOperationResponse">
+    <wsdl:part element="xsd2:DFHCOMMAREA" name="DFHCOMMAREAPart"/>
+  </wsdl:message>
+  <wsdl:portType name="LAB304PortType">
+    <wsdl:operation name="LAB3POTOperation">
+      <wsdl:input message="tns:LAB3POTOperationRequest" name="LAB3POTOperationRequest"/>
+      <wsdl:output message="tns:LAB3POTOperationResponse" name="LAB3POTOperationResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="LAB304Binding" type="tns:LAB304PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="LAB3POTOperation">
+      <soap:operation soapAction="urn:LAB304" style="document"/>
+      <wsdl:input name="LAB3POTOperationRequest">
+        <soap:body parts="DFHCOMMAREAPart" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="LAB3POTOperationResponse">
+        <soap:body parts="DFHCOMMAREAPart" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="LAB3POTService">
+    <wsdl:port binding="tns:LAB304Binding" name="LAB304Port">
+      <soap:address location="http://zserveros.demos.ibm.com:9046/wdz/LAB3POT"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

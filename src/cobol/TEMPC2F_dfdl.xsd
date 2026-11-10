@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" xmlns:dfdlCobolFmt="http://www.ibm.com/dfdl/CobolDataDefinitionFormat" xmlns:ibmDfdlExtn="http://www.ibm.com/dfdl/extensions" xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+  <xsd:import namespace="http://www.ibm.com/dfdl/CobolDataDefinitionFormat" schemaLocation="../../IBMdefined/CobolDataDefinitionFormat.xsd"/>
+  <xsd:complexType name="INREC">
+    <xsd:sequence>
+      <xsd:element default="0" dfdl:nilKind="literalCharacter" dfdl:nilValue="0" name="f1_in" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="OUTREC">
+    <xsd:sequence>
+      <xsd:element default="0" dfdl:nilKind="literalCharacter" dfdl:nilValue="0" name="f1_out" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:short">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="999"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default=" " dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" name="fill_0" nillable="true">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="SPACE"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default=" " dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" name="ans_out" nillable="true">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="SPACE"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="6"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="H1">
+    <xsd:sequence>
+      <xsd:element default="*" dfdl:length="80" dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" name="f1" nillable="true">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="ALL" value="*"/>
+          </xsd:appinfo>
+          <xsd:documentation>PIC X(80) display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICX__string">
+            <xsd:maxLength value="80"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="H2">
+    <xsd:sequence>
+      <xsd:element default="FHARENHIT" dfdl:length="10" dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" name="f1" nillable="true">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="string_value" value="FHARENHIT"/>
+          </xsd:appinfo>
+          <xsd:documentation>PIC X(10) display</xsd:documentation>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="dfdlCobolFmt:PICX__string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default=" " dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" name="fill_0" nillable="true">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="SPACE"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="10"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+      <xsd:element default="CELCIOUS" dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" name="f2" nillable="true">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="string_value" value="CELCIOUS"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="8"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ATMR">
+    <xsd:sequence>
+      <xsd:element default="YES" dfdl:nilKind="literalCharacter" dfdl:nilValue="%SP;" name="a_t_m_r" nillable="true">
+        <xsd:annotation>
+          <xsd:appinfo source="http://www.wsadie.com/appinfo">
+            <initialValue kind="string_value" value="YES"/>
+          </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:string">
+            <xsd:maxLength value="3"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="CENT">
+    <xsd:sequence>
+      <xsd:element default="0" dfdl:nilKind="literalCharacter" dfdl:nilValue="0" name="cent" nillable="true">
+        <xsd:simpleType>
+          <xsd:restriction base="xsd:decimal">
+            <xsd:minInclusive value="0"/>
+            <xsd:maxInclusive value="999.99"/>
+          </xsd:restriction>
+        </xsd:simpleType>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:annotation>
+    <xsd:appinfo source="http://www.ogf.org/dfdl/">
+      <dfdl:format binaryFloatRep="{$dfdl:binaryFloatRep}" byteOrder="{$dfdl:byteOrder}" encoding="{$dfdl:encoding}" ignoreCase="yes" leadingSkip="0" occursCountKind="fixed" ref="dfdlCobolFmt:CobolDataFormat" textNumberPadCharacter="0" textStringJustification="left" textStringPadCharacter="%SP;" textZonedSignStyle="asciiStandard" trailingSkip="0" useNilForDefault="no"/>
+    </xsd:appinfo>
+  </xsd:annotation>
+  <xsd:annotation>
+    <xsd:documentation>
+	This XSD was created by importing COBOL copybook.
+
+	Source file:	src\cobol\TEMPC2F.cbl
+
+	Import options:
+		EXTENSION_COB=FP
+		COMPILE_TIME_LOCALE=0
+		SOSI=false
+		QUOTE=DOUBLE
+		CURRENCY="$"
+		EXTENSION_CPY=DS
+		EXTENSION_CBL=FP
+		ADDITIONAL_OPTIONS=
+		POSTERRORS_TO_PROBLEMS_VIEW=true
+		TRUNC=STD
+		NSYMBOL=NATIONAL
+		EXT_DECIMAL_SIGN=ASCII
+		PLATFORM_SELECTION=0
+		COLLSEQ=BIN
+		HOST_CODEPAGE_EC=IBM-1047
+		SYSLIB=
+		ASCII_CODEPAGE=0
+		ERROR_MSGS_LANG=0
+		EXTENSION_CCP=FP
+		COMPAT=true
+		CODEPAGE=ISO-8859-1
+		FLOATING_POINT_FORMAT=0
+		NCOLLSEQ=BIN
+		REMOTE_ENDIAN=Little
+		ENDIAN=Little
+		BOL_ERRORS_VIEW_NAME='Problems' view
+		NUMPROC=PFD
+		SCHEMA_TARGET_NAMESPACE_URI=null
+		CREATE_DEFAULT_VALUES_FROM_INITIAL_VALUES=true
+		CREATE_FACETS_FROM_LEVEL_88_VALUE_CLAUSES=false
+		CREATE_NULL_VALUES_FOR_FIELDS=true
+		NULL_CHARACTER_FOR_STRING=%SP;
+		NULL_CHARACTER_FOR_NUMBER=0
+		STRING_PADDING_CHARACTER=%SP;
+		NUMBER_PADDING_CHARACTER=0
+		DEFAULT_FOR_STRING= 
+		DEFAULT_FOR_NUMBER=0
+
+</xsd:documentation>
+  </xsd:annotation>
+  <xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="INREC" type="INREC"/>
+  <xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="OUTREC" type="OUTREC"/>
+  <xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="OUTREC" type="OUTREC"/>
+  <xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="H1" type="H1"/>
+  <xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="H2" type="H2"/>
+  <xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="ATMR" type="ATMR"/>
+  <xsd:element dfdl:lengthKind="implicit" ibmSchExtn:docRoot="true" name="CENT" type="CENT"/>
+</xsd:schema>

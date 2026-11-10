@@ -1,0 +1,88 @@
+# ClassMaterials — how git treats z/OS source in a mixed Windows/macOS class.
+#
+# Teaching material for the git-zos-workflow module: mainframe source makes a
+# round trip between an ASCII workstation and an EBCDIC host, so "is this file
+# text, and whose line endings does it use?" stops being a trivia question.
+
+# Let git decide text vs binary, normalising to LF inside the repository.
+# Working-tree endings still follow each developer's platform.
+* text=auto
+
+# z/OS source is always text. Naming it explicitly means a Windows student and
+# a macOS student never produce a whole-file diff just by saving.
+*.cbl   text
+*.cpy   text
+*.jcl   text
+*.rex   text
+*.rexx  text
+*.pli   text
+*.asm   text
+*.mac   text
+*.txt   text
+*.md    text
+*.yaml  text
+*.yml   text
+*.json  text
+
+# Shell scripts must keep LF or they fail in USS and on macOS.
+*.sh    text eol=lf
+
+# PowerShell is happier with CRLF on the platform that runs it.
+*.ps1   text eol=crlf
+
+# Test data is fixed-length records, not lines — never let git rewrite it.
+*.tdat  binary
+
+# Office artifacts and images are binary; diffing them is meaningless.
+*.pptx  binary
+*.docx  binary
+*.xlsx  binary
+*.png   binary
+*.jpg   binary
+*.gif   binary
+
+# More z/OS source types carried by the Eclipse labs (BMS maps, binder and
+# link decks, IMS MFS, procs, includes). Same rule as above: always text.
+*.bms   text
+*.bnd   text
+*.cntl  text
+*.inc   text
+*.lnk   text
+*.mfs   text
+*.prc   text
+*.groovy text
+*.properties text
+
+# --- When git itself runs on z/OS -----------------------------------------
+# Everything above is about workstations. When a build pipeline clones this
+# repository onto z/OS UNIX (DBB does), git on z/OS reads the attributes below
+# and writes these files to the USS working tree in EBCDIC (IBM-1047). Git on
+# Windows and macOS ignores them entirely, so they never affect a student.
+*.asm        zos-working-tree-encoding=ibm-1047
+*.bms        zos-working-tree-encoding=ibm-1047
+*.bnd        zos-working-tree-encoding=ibm-1047
+*.cbl        zos-working-tree-encoding=ibm-1047
+*.cntl       zos-working-tree-encoding=ibm-1047
+*.cpy        zos-working-tree-encoding=ibm-1047
+*.groovy     zos-working-tree-encoding=ibm-1047
+*.inc        zos-working-tree-encoding=ibm-1047
+*.jcl        zos-working-tree-encoding=ibm-1047
+*.lnk        zos-working-tree-encoding=ibm-1047
+*.mac        zos-working-tree-encoding=ibm-1047
+*.mfs        zos-working-tree-encoding=ibm-1047
+*.pli        zos-working-tree-encoding=ibm-1047
+*.prc        zos-working-tree-encoding=ibm-1047
+*.properties zos-working-tree-encoding=ibm-1047
+*.rex        zos-working-tree-encoding=ibm-1047
+*.rexx       zos-working-tree-encoding=ibm-1047
+*.sh         zos-working-tree-encoding=ibm-1047
+*.txt        zos-working-tree-encoding=ibm-1047
+
+# ...and the files that must stay ASCII even on z/OS, because tools read them
+# as configuration rather than as source.
+*.md           zos-working-tree-encoding=iso8859-1
+*.yaml         zos-working-tree-encoding=iso8859-1
+*.yml          zos-working-tree-encoding=iso8859-1
+*.json         zos-working-tree-encoding=iso8859-1
+.project       zos-working-tree-encoding=iso8859-1
+.gitattributes zos-working-tree-encoding=iso8859-1

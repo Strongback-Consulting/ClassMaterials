@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><?fileVersion 4.0.0?><cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration id="org.eclipse.cdt.core.default.config.355800708">
+			<storageModule buildSystemId="org.eclipse.cdt.core.defaultConfigDataProvider" id="org.eclipse.cdt.core.default.config.355800708" moduleId="org.eclipse.cdt.core.settings" name="Configuration">
+				<externalSettings/>
+				<extensions>
+					<extension id="com.ibm.cdz.remote.core.CDZScannerInfoProvider" point="org.eclipse.cdt.core.ScannerInfoProvider"/>
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
+	<storageModule moduleId="org.eclipse.cdt.core.language.mapping">
+		<project-mappings>
+			<file-mapping configuration="org.eclipse.cdt.core.default.config.355800708" language="org.eclipse.cdt.core.gcc" path="src/cpp/biorythm.c"/>
+			<file-mapping configuration="" language="org.eclipse.cdt.core.gcc" path="src/cpp/format.c"/>
+		</project-mappings>
+	</storageModule>
+</cproject>

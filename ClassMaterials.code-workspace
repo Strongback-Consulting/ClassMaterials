@@ -1,0 +1,20 @@
+{
+    "folders": [
+        {
+            "name": "ClassMaterials",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.rulers": [6, 7, 11, 72, 80],
+        "files.trimTrailingWhitespace": false,
+        "zopeneditor.zapp.showZappNotifications": false
+    },
+    "extensions": {
+        "recommendations": [
+            "IBM.zopeneditor",
+            "Zowe.vscode-extension-for-zowe",
+            "IBM.zopendebug"
+        ]
+    }
+}

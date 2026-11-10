@@ -1,0 +1,44 @@
+{
+    "$schema": "./zowe.schema.json",
+    "autoStore": true,
+    "profiles": {
+        "class-zosmf": {
+            "type": "zosmf",
+            "properties": {
+                "port": 443
+            }
+        },
+        "class-rse": {
+            "type": "rse",
+            "properties": {
+                "port": 6800,
+                "basePath": "rseapi",
+                "protocol": "https"
+            }
+        },
+        "class-tso": {
+            "type": "tso",
+            "properties": {
+                "account": "<ACCOUNT>",
+                "codePage": "1047"
+            }
+        },
+        "base": {
+            "type": "base",
+            "properties": {
+                "host": "<HOSTNAME>",
+                "rejectUnauthorized": true
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
+        }
+    },
+    "defaults": {
+        "zosmf": "class-zosmf",
+        "rse": "class-rse",
+        "tso": "class-tso",
+        "base": "base"
+    }
+}

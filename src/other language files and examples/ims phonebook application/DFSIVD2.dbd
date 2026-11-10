@@ -1,0 +1,49 @@
+**************************** INSTALL/IVP ****************************** 00010000
+*                                                                     * 00020000
+*                   M O D U L E    P R O L O G U E                    * 00030000
+*                                                                     * 00040000
+*********************************************************************** 00050000
+*                                                                     * 00060000
+*          NAME:  DFSIVD2                                             * 00070000
+*                                                                     * 00080000
+*   DESCRIPTION:  HDAM/VSAM DBD                                       * 00090000
+*                                                                     * 00100000
+**************************************************************@SCPYRT** 00110000
+*                                                                     * 00111000
+*  Licensed Materials - Property of IBM                               * 00112000
+*                                                                     * 00113000
+*  5655-J38                                                           * 00114000
+*                                                                     * 00115000
+*  (C) Copyright IBM Corp. 1974,1998 All Rights Reserved              * 00116000
+*                                                                     * 00117000
+*  US Government Users Restricted Rights - Use, duplication or        * 00150000
+*  disclosure restricted by GSA ADP Schedule contract with            * 00190000
+*  IBM Corp.                                                          * 00200000
+*                                                                     * 00220000
+**************************************************************@ECPYRT** 00240000
+*                                                                     * 00260000
+*        STATUS:  IMS/ESA 3.1                                         * 00270000
+*                                                                     * 00280000
+*   MODULE TYPE:  ASSEMBLER                                           * 00290000
+*                                                                     * 00300000
+*       CHANGES:  PROLOGUE ADDED AND MINOR CHANGES FOR 3.1            * 00310000
+*                                                                     * 00320000
+*---+----1----+----2----+----3----+----4----+----5----+----6----+----7* 00330000
+*---------------------------------------------------------------------* 00340000
+*                                                                     * 00350000
+*  SEGMENT DESCRIPTION                                                * 00360000
+*    ROOT ONLY DATABASE                                               * 00370000
+*      BYTES  1-10  LAST NAME (CHARACTER) - KEY                       * 00380000
+*      BYTES  11-20 FIRST NAME (CHARACTER)                            * 00390000
+*      BYTES  21-30 INTERNAL PHONE NUMBER (NUMERIC)                   * 00400000
+*      BYTES  31-37 INTERNAL ZIP (CHARACTER)                          * 00410000
+*      BYTES  38-40 RESERVED                                          * 00420000
+*                                                                     * 00430000
+*---------------------------------------------------------------------* 00440000
+  DBD    NAME=IVPDB2,ACCESS=HDAM,RMNAME=(DFSHDC40,40,100)               00450000
+  DATASET DD1=DFSIVD2,DEVICE=3380,SIZE=2048                             00460000
+  SEGM   NAME=A1111111,PARENT=0,BYTES=40,RULES=(LLL,LAST)               00470000
+  FIELD  NAME=(A1111111,SEQ,U),BYTES=010,START=00001,TYPE=C             00480000
+  DBDGEN                                                                00490000
+  FINISH                                                                00500000
+  END                                                                   00510000

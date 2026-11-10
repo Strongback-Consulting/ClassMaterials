@@ -1,0 +1,69 @@
+*WORKING MFS SOURCE
+         PRINT ON,NOGEN                                                 00001
+         EJECT
+*********************************************************************** 00127
+*        INPUT MESSAGE FORMAT (MID) FOR IBM905                        * 00129
+*        VB005A01                                                     * 00130
+*********************************************************************** 00132
+IBM905I  MSG TYPE=INPUT,SOR=(IBM905,IGNORE),NXT=IBM905O                 00133
+         SEG                                                            00134
+         MFLD (PFKY,'IBM9005  ENTER'),LTH=14                            00135
+         MFLD IPRTNUM,LTH=23                                            00136
+         MSGEND                                                         00142
+         EJECT                                                          00143
+*********************************************************************** 00144
+*        OUTPUT MESSAGE FORMAT (MOD) FOR IBM905                       * 00146
+*        VB005A55 (USED FOR MAIN OUTPUT SCREEN)                       * 00147
+*********************************************************************** 00149
+IBM905O  MSG TYPE=OUTPUT,SOR=(IBM905,IGNORE),NXT=IBM905I                00150
+         SEG                                                            00151
+         MFLD IPRTNUM,LTH=23                                            00153
+         MFLD IERRMSG,LTH=79                                            00153
+         MSGEND                                                         00177
+*********************************************************************** 00144
+*        OUTPUT MESSAGE FORMAT (MOD) FOR IBM905                       * 00146
+*        VB005A55 (USED FOR INITIAL MOD FORMAT)                       * 00147
+*********************************************************************** 00149
+IBM905   MSG TYPE=OUTPUT,SOR=(IBM905,IGNORE),NXT=IBM905I                00150
+         SEG                                                            00151
+         MFLD (IPRTNUM,'_______________________'),LTH=23                00153
+         MSGEND
+*********************************************************************** 00003
+*              MAIN MENU   PART-SUPP   (IBM9005)                      * 00005
+*             FORMAT BLOCKS  (DIF/DOF) FOR 3270-2                     * 00009
+*********************************************************************** 00011
+IBM905   FMT                                                            00012
+         DEV   TYPE=(3270,2),FEAT=IGNORE,SYSMSG=IERRMSG,               X00013
+               PFK=(PFKY,                                              X00014
+               1='IBM9005  PF1  ',                                     X00015
+               2='IBM9005  PF2  ',                                     X00016
+               3='IBM9005  PF3  ',                                     X00017
+               4='IBM9005  ENTER')                                      00018
+         DIV   TYPE=INOUT                                               00039
+         DPAGE
+         DFLD  'IBM9005',LTH=8,                                        *
+               POS=(2,2),                                              *
+               ATTR=(NUM,PROT,HI)
+         DFLD  'PARTS SUPPLIERS INFORMATION SYSTEM',LTH=34,            *
+               POS=(3,23),                                             *
+               ATTR=(NUM,PROT,HI)
+         DFLD  'PART NUMBER:',LTH=12,                                  *
+               POS=(6,5),                                              *
+               ATTR=(NUM,PROT,HI)
+IPRTNUM  DFLD  LTH=23,                                                 *
+               POS=(6,18),                                             *
+               ATTR=(MOD,ALPHA)
+         DFLD  'PF1 = PART INFORMATION MAINTENANCE',LTH=34,            *
+               POS=(12,17),                                            *
+               ATTR=(NUM,PROT,HI)
+         DFLD  'PF2 = SUPPLIER INFORMATION MAINTENANCE',LTH=38,        *
+               POS=(15,17),                                            *
+               ATTR=(NUM,PROT,HI)
+         DFLD  'PF3 = PO INFORMATION MAINTENANCE',LTH=32,              *
+               POS=(18,17),                                            *
+               ATTR=(NUM,PROT,HI)
+OUTPUT1  DFLD  LTH=45,                                                 *
+               POS=(20,13)
+         FMTEND                                                         00125
+         EJECT                                                          00126
+         END                                                            00177
