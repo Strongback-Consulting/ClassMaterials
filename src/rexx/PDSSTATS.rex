@@ -1,8 +1,7 @@
 /*REXX ROUTINE TO READ A PDS DIRECTORY AND SHOW THE ISPF STATS     */
 /*     NON LOAD MODULE ONLY.                                       */
 /* AUTHOR: BODI 2004.02.10, WITH UPDATES BY GREGCZ                 */
-  /*           */
-  /* TRACE ALL */
+/* TRACE ALL */
 
 T1 = TIME('E')              /* CLEAR TIMER */
 PARSE UPPER ARG DSNAME .
