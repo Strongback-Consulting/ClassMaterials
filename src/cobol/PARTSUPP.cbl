@@ -9,7 +9,7 @@
 000110******************************************************************00000110
 000140*                                                                *00000140
 000150*    PROGRAM NUMBER      PART SUPPLIERS
-000170*    PROGRAM NAME        DAILY WREHOUSE LOOKUP                   *00000170
+000170*    PROGRAM NAME        DAILY WREHOUSE LOOKUP                   *
 000180*                                                                *00000180
 000180*                                                                *00000180
 000190******************************************************************00000190
@@ -3555,7 +3555,7 @@
 023420*                                                                 00023420
 023510******************************************************************00023510
 023520 100-HOUSEKEEPING SECTION.                                        00023520
-023530*TODO Change TRANS-FILE-In to wwwww                                                                 00023530
+023530*TODO Change TRANS-FILE-In to wwwww                                       
 023540 110-OPEN-FILES.
 023550*                                                                 00023550
 023560     OPEN INPUT  TRANS-FILE-IN                                    00023560
@@ -3941,7 +3941,7 @@
 027270     SET LADING-SUBSC TO 1.
                                                                         00027270
 027280 141-READ-SUPPLR-MASTER.                                          00027280
-027290*WHATEVER Change this IF statement from 4000 --> 5000                                                                 00027290
+027290*WHATEVER Change this IF statement from 4000 --> 5000                     
 027300     IF DIV-SUBSC GREATER THAN 4000                               00027300
 027310         MOVE 16 TO COLR-ABEND-CODE                               00027310
 027320         MOVE 999 TO LW40-ABEND-CODE                              00027320
